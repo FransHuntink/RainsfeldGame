@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/0. Scenes/Prologue.unity
+  isLoaded: 1
+  isActive: 1
