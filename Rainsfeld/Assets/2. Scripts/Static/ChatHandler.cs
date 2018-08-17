@@ -42,6 +42,7 @@ public static class ChatHandler {
         {
             char dot = '.';
             char space = ' ';
+
             if (stringToFormat[i] != dot) //not end of line -> We add the character to our string
             {
                 width += 1;

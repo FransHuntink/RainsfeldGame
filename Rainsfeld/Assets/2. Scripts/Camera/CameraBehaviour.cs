@@ -12,7 +12,7 @@ public class CameraBehaviour : MonoBehaviour {
 
     void Awake()
     {
-        ColorManager.instance.mainCamera = this.gameObject;
+        //ColorManager.instance.mainCamera = this.gameObject;
     }
 
 
