@@ -4,31 +4,27 @@ using UnityEngine;
 using UnityStandardAssets._2D;
 
 public class CameraBehaviour : MonoBehaviour {
+
     private float defaultZ = -10;
     private float heightOffset = 1.5f;
+
     [Header("Camera settings (multipliers)")]
     [SerializeField]
     private float cameraSpeed;
 
-    void Awake()
-    {
-        //ColorManager.instance.mainCamera = this.gameObject;
-    }
-
 
 	// Update is called once per frame
 	void Update () {
+        FollowPlayer();
+	}
+
+    private void FollowPlayer()
+    {
         Vector3 targetPos;
         targetPos.x = PlayerController.instance.playerObject.transform.position.x;
         targetPos.y = PlayerController.instance.playerObject.transform.position.y + heightOffset;
         targetPos.z = defaultZ;
         gameObject.transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * cameraSpeed);
-	}
-
-    //this function passes values to the coroutine
-    public void PassUpdateColor(Color color)
-    {
-        StartCoroutine((UpdateColor((color))));
     }
 
     //update color of background color of the sky

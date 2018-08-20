@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCChat : MonoBehaviour
+public class NPCChat : NPCController
 {
     /// <summary>
     /// OneTimeTrigger: Player triggers once, starts cycling through dialog
@@ -44,6 +44,7 @@ public class NPCChat : MonoBehaviour
 
     void Start()
     {
+      //  base.initializeNPC();
         InitializeComponents();
         GrabDialog();
     }
@@ -72,10 +73,12 @@ public class NPCChat : MonoBehaviour
         }
         else
         {
-            Debug.Log(DebugHandler.debugType.NPC + ": Failed to initialize NPC text for " + gameObject.name);
+            DebugManager.dm.Out("NPCChat: Failed to initialize NPC text for " + gameObject.name);
         }
     }
 
+
+    
     //player triggers the chat trigger on this NPC
     public void OnChatTrigger()
     {
@@ -92,26 +95,26 @@ public class NPCChat : MonoBehaviour
                     break;
 
                 case dialogMode.OnCollide:
+                    if(!isCycling)
+                        StartCoroutine(CycleChats());
                     break;
 
                 case dialogMode.OneTimeTrigger:
                     if (!isCycling)
-                    {
                         StartCoroutine(CycleChats());
-                        isCycling = true;
-                    }
                     break;
             }
         }
         else
         {
-            Debug.Log(DebugHandler.debugType.NPC + ": Player tried to interact with NPC: " + gameObject.name + "but the NPC has not initialized its chat!");
+        
         }
     }
 
     //cycles through the chats until chats are no longer available. We pause the cycle when player goes out of range
     private IEnumerator CycleChats()
     {
+        isCycling = true;
         float cycleTime = 1f;
         textMesh.text = dialogList[dialogIndex];
         //if smartTimer is on, we base dialog on a base time + x seconds per character

@@ -6,7 +6,6 @@ public class PlayerController : PlayerBase {
 
 
     public static PlayerController instance;
-    
 
 
 	// Use this for initialization
@@ -22,10 +21,7 @@ public class PlayerController : PlayerBase {
         PlayerControlListener();
     }
 
-    public override void InitializePlayer()
-    {
-        base.InitializePlayer();  
-    }
+
 
     public override void OnInteraction()
     {
@@ -37,9 +33,17 @@ public class PlayerController : PlayerBase {
     {
         if (Input.GetButtonDown("Interact"))
         {
-            Debug.Log(DebugHandler.debugType.Interaction + ": Player sent interaction");
             OnInteraction();
         }
     }
+
+   public void RespawnPlayer()
+    {
+        if (respawnPos != null)
+            gameObject.transform.position = respawnPos + new Vector2(0, 15);
+
+        ColorManager.cm.InvokeSetColor(0);
+    }
    
 }
+    

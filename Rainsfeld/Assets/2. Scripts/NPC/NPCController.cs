@@ -1,39 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NPCController : NPCBase, IInteractable {
+
 
     /// <summary>
     /// This class is the root class of all classes
     /// associated with the NPC.
-    /// This class should always be on the root object of the NPC!
+    /// should always be on the root object of the NPC!
     /// </summary>
 
 
-	// Use this for initialization
+    //  [HideInInspector]
+    public NPCChat chatController;
+
+
+
     void Start()
     {
         initializeNPC();
     }
 
-    void Update()
+    //initialize this NPC
+    private void initializeNPC()
     {
-      
+        DebugManager.dm.Out("NPCController - initialized this NPC");
+        if (chatController == null)
+            chatController = GetComponentInChildren<NPCChat>();
     }
-
-    public override void initializeNPC()
+    
+    //someone interacts with this NPC
+    public override void OnInteract()
     {
-        base.initializeNPC();
-    }
-
-    public void OnInteractedWith()
-    {
-        //send the chat interaction to our chatController NPC class
-        Debug.Log(DebugHandler.debugType.Interaction + ": NPC received interaction of player.");
         chatController.OnChatTrigger();
+        base.OnInteract();
     }
-
 
 
 }

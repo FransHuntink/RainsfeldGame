@@ -2,29 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCBase : MonoBehaviour {
+public abstract class NPCBase : Interaction {
+
+    //adjustables
+    public float minDistance = 5;
+    public float NPCSpeed = 500;
+
+    //references
+    private Rigidbody2D npcRigid;
 
     /// <summary>
-    /// A class with all shared variables between NPCs
-    /// 
+    /// A class with all template NPC variables
+    /// </summary>
 
-    [HideInInspector]
-    public NPCChat chatController;
-    [HideInInspector]
-    public NPCMovement npcMovement;
-    public Rigidbody2D NPCrigid;
+    public void MoveNPC(Vector2 target) {}
 
-    public virtual void initializeNPC()
-    {
-        if (chatController == null)
-            chatController = GetComponentInChildren<NPCChat>();
 
-        if (npcMovement == null)
-            npcMovement = GetComponent<NPCMovement>();
 
-        if (NPCrigid == null)
-            NPCrigid = GetComponent<Rigidbody2D>();
 
-    }
  
+
 }
