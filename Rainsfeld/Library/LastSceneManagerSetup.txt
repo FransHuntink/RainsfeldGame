@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/0. Scenes/MainMenu.unity
+- path: Assets/0. Scenes/SurfTest.unity
   isLoaded: 1
   isActive: 1
