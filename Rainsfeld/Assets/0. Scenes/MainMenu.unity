@@ -200,62 +200,62 @@ Prefab:
     - target: {fileID: 114454016671559890, guid: 5b27064d20952f148945dce784554e84,
         type: 2}
       propertyPath: savedColorPresets.Array.data[0].terrainColor.r
-      value: 0.16911763
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114454016671559890, guid: 5b27064d20952f148945dce784554e84,
         type: 2}
       propertyPath: savedColorPresets.Array.data[0].terrainColor.g
-      value: 0.12186418
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114454016671559890, guid: 5b27064d20952f148945dce784554e84,
         type: 2}
       propertyPath: savedColorPresets.Array.data[0].terrainColor.b
-      value: 0.12186418
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114454016671559890, guid: 5b27064d20952f148945dce784554e84,
         type: 2}
       propertyPath: savedColorPresets.Array.data[0].foliageColor.r
-      value: 0.5808823
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114454016671559890, guid: 5b27064d20952f148945dce784554e84,
         type: 2}
       propertyPath: savedColorPresets.Array.data[0].foliageColor.g
-      value: 0.012813592
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114454016671559890, guid: 5b27064d20952f148945dce784554e84,
         type: 2}
       propertyPath: savedColorPresets.Array.data[0].foliageColor.b
-      value: 0.012813592
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114454016671559890, guid: 5b27064d20952f148945dce784554e84,
         type: 2}
       propertyPath: savedColorPresets.Array.data[0].backgroundColor.r
-      value: 0.14705884
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114454016671559890, guid: 5b27064d20952f148945dce784554e84,
         type: 2}
       propertyPath: savedColorPresets.Array.data[0].backgroundColor.g
-      value: 0.12110728
+      value: 0.6413793
       objectReference: {fileID: 0}
     - target: {fileID: 114454016671559890, guid: 5b27064d20952f148945dce784554e84,
         type: 2}
       propertyPath: savedColorPresets.Array.data[0].backgroundColor.b
-      value: 0.12110728
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114454016671559890, guid: 5b27064d20952f148945dce784554e84,
         type: 2}
       propertyPath: savedColorPresets.Array.data[0].lightningColor.r
-      value: 0.9117647
+      value: 0.6838235
       objectReference: {fileID: 0}
     - target: {fileID: 114454016671559890, guid: 5b27064d20952f148945dce784554e84,
         type: 2}
       propertyPath: savedColorPresets.Array.data[0].lightningColor.g
-      value: 0.0067041586
+      value: 0.50662583
       objectReference: {fileID: 0}
     - target: {fileID: 114454016671559890, guid: 5b27064d20952f148945dce784554e84,
         type: 2}
       propertyPath: savedColorPresets.Array.data[0].lightningColor.b
-      value: 0.0067041586
+      value: 0.3167712
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b27064d20952f148945dce784554e84, type: 2}

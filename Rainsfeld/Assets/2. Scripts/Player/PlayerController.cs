@@ -12,10 +12,12 @@ public class PlayerController : PlayerBase {
 	void Awake () {
         instance = this;
 	}
+
     void Start()
     {
         InitializePlayer();
     }
+
     void Update()
     {
         PlayerControlListener();
@@ -23,17 +25,11 @@ public class PlayerController : PlayerBase {
 
 
 
-    public override void OnInteraction()
-    {
-        base.OnInteraction();
-    }
-
-
     private void PlayerControlListener()
     {
         if (Input.GetButtonDown("Interact"))
         {
-            OnInteraction();
+            base.OnInteraction();
         }
     }
 

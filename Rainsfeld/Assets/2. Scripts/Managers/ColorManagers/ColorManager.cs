@@ -36,24 +36,26 @@ public class ColorManager : MonoBehaviour
     {
         cm = this;
 
-       // if (gameObject.GetComponent<SceneLoader>().GetCurrentScene() == "Prologue")
-       // {
-       //     lightSource = GameObject.Find("Directional light").GetComponent<Light>(); //this is temp - needs optimization
-       // }
     }
 
     public void InvokeSetColor(int index)
     {
-          lightSource = GetComponentInChildren<Light>();
-          SetColor(savedColorPresets[index]);
+        lightSource = GetComponentInChildren<Light>();
+
+        /* We pick the preset based on index parameter */
+
+        if (index <= savedColorPresets.Length)
+            SetColor(savedColorPresets[index]);
     }
+
     //set a color preset
     private bool SetColor(ColorPreset preset)
     {
         if (isTransitioning)
         {
             //we either ignore this preset or add it to our queue
-            DebugManager.dm.Out("ColorManager: Refused attempt to apply two presets simultaniously. Add to queue is " + allowQueue);
+            DebugManager.dm.Out("ColorManager: Refused attempt to apply " +
+                            "two presets simultaniously. Add to queue is " + allowQueue);
 
             if (allowQueue)
                 presetQueue.Add(preset);
@@ -78,39 +80,23 @@ public class ColorManager : MonoBehaviour
         float step = lerpStepSize;
         while (t < 1)
         {
-            //apply preset to foliage, terrain and background
-            foliageMaterial.color = Color.Lerp(foliageMaterial.color, preset.foliageColor, t);
-            terrainMaterial.color = Color.Lerp(terrainMaterial.color, preset.terrainColor, t);
-            backgroundMaterial.color = Color.Lerp(backgroundMaterial.color, preset.backgroundColor, t);
-            lightSource.color = Color.Lerp(lightSource.color, preset.lightningColor, t);
-
+            for(int i = 0; i < preset.materials.Length; i++)
+            {
+                preset.materials[i].color = Color.Lerp(preset.materials[i].color, preset.materialColors[i], t);
+                lightSource.color = Color.Lerp(lightSource.color, preset.lightningColor, t);
+            }
+ 
             t += step;
             yield return new WaitForSeconds(lerpSmoothness);
         }
         t = 0;
 
         isTransitioning = false;
+
         DebugManager.dm.Out("ColorManager: Applied color preset " + preset.presetName);
 
     }
-    
 
-
-
-    //update ingame color manually - unused
-    private IEnumerator SetManualColor(Color targetColor, Material spriteToAdjust)
-    {
-        float t = 0;
-        float step = 0.02f;
-        while (t < 1)
-        {
-            spriteToAdjust.color = Color.Lerp(spriteToAdjust.color, targetColor, t);
-            t += step;
-            yield return new WaitForSeconds(lerpSmoothness);
-        }
-        t = 0;
-
-    }
 
 
 

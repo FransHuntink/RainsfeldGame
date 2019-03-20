@@ -9,7 +9,7 @@ public class NPCChat : NPCController
     /// ManualTrigger: Player triggers every time to cycle through dialog
     /// FullAuto: NPC plays dialog once player is in range or collided with 
     /// </summary>
-    /// 
+   
     public enum dialogMode
     {
         OneTimeTrigger, ManualTrigger, OnCollide
@@ -44,12 +44,11 @@ public class NPCChat : NPCController
 
     void Start()
     {
-      //  base.initializeNPC();
         InitializeComponents();
         GrabDialog();
     }
 
-    //NPC automatically tries to initialize some components when null
+    //NPC automatically tries to initialize components when null
     private void InitializeComponents()
     {
         if (chatBubbleSprite == null)
@@ -117,13 +116,17 @@ public class NPCChat : NPCController
         isCycling = true;
         float cycleTime = 1f;
         textMesh.text = dialogList[dialogIndex];
+
         //if smartTimer is on, we base dialog on a base time + x seconds per character
         if (smartTimer)
         {
             cycleTime = 0.8f + dialogList[dialogIndex].Length * (0.03f * dialogSpeed);
         }
         yield return new WaitForSeconds(chatCycleSpeed * cycleTime);
-        IsPlayerInRange(); //check if the player is in range before we produce a new dialog 
+
+        //check if the player is in range before we produce a new dialog 
+
+        IsPlayerInRange(); 
 
         if (dialogIndex < dialogList.Count - 1)
         {
@@ -144,10 +147,10 @@ public class NPCChat : NPCController
         }
     }
 
-    //player is always in view right now, temp solution
+    // Is the player in range?
     private void IsPlayerInRange()
     {
-        Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position); //WorldToViewportPoint(target.position);
+        Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position); 
         if (viewPos.x >= 0 && viewPos.x <= 1)
         {
             isInView = true;

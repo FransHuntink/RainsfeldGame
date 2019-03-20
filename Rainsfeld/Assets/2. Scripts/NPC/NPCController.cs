@@ -12,21 +12,18 @@ public class NPCController : NPCBase, IInteractable {
     /// should always be on the root object of the NPC!
     /// </summary>
 
-
     //  [HideInInspector]
     public NPCChat chatController;
 
-
-
     void Start()
     {
-        initializeNPC();
+        InitializeNPC();
     }
 
     //initialize this NPC
-    private void initializeNPC()
+    private void InitializeNPC()
     {
-        DebugManager.dm.Out("NPCController - initialized this NPC");
+        //DebugManager.dm.Out("NPCController - initialized this NPC");
         if (chatController == null)
             chatController = GetComponentInChildren<NPCChat>();
     }

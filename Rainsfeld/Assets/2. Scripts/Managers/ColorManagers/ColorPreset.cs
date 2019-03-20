@@ -9,13 +9,17 @@ public class ColorPreset  {
     /// <summary>
     /// Class that stores preset colors for terrain,
     /// </summary>
-
+   
     public string presetName;
-    public Color terrainColor;
-    public Color foliageColor;
-    public Color backgroundColor;
     public Color lightningColor;
+    
 
+    // New dynamic material way
+    public Material[] materials;
+    public Color[] materialColors;
+
+
+    /*
     //initialize the preset
     public ColorPreset(string pName, Color terrainCol, Color foliageCol, Color bgCol, Color lCol)
     {
@@ -24,6 +28,12 @@ public class ColorPreset  {
         foliageColor = foliageCol;
         backgroundColor = bgCol;
         lightningColor = lCol;
+    }*/
+
+    public ColorPreset(string name, Material[] materials, Color[] materialColors)
+    {
+        this.materials = materials;
+        this.materialColors = materialColors;
     }
 	
 }
